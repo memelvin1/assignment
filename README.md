@@ -1,39 +1,33 @@
 # assignment
- else
-                {
-                    validMenuSelect = true;
-                }
-
-            }
-            Console.WriteLine();
-            return int.Parse(userInput);
-        }
-        public static int ValidateUserInput(string Side)
+  static void Main(string[] args)
         {
-            int number = 1;
-            bool isValid = false;
-            while (isValid == false)
+            Rectangle r = new Rectangle();
+            bool validrectangleselect = false;
+            string rectangleselection;
+            int selection;
+            while (validrectangleselect == false)
             {
-                Console.WriteLine("pls enter the {side} of your rectangle:");
-                string userInput = Console.ReadLine();
+                Console.WriteLine("1.create default rectangle");
+                Console.WriteLine("2.create custom rectangle");
+                Console.WriteLine("choose a menu item to begin");
+                rectangleselection = Console.ReadLine();
                 Console.WriteLine();
-                bool result = int.TryParse(userInput, out number);
-                if (result == false)
-                {
-                    Console.WriteLine("thats not a valid input,please try again:/n");
-                }
-                else if (number < 0)
-                {
-                    Console.WriteLine("number cannot be less than 0,please try again:/n");
 
-                }
-                else
+                if (rectangleselection != "1" && rectangleselection != "2")
                 {
-                    isValid = true;
-                    object chosennumber = null;
-                    Console.WriteLine($"your {chosennumber}has been changed to:{number}.\n");
-
+                    Console.WriteLine("that is not a valid selection,please try again.\n");
                 }
-            }
-            return number;
-        }
+                else if (int.Parse(rectangleselection) == 1)
+                {
+                    validrectangleselect = true;
+                    Random measure = new Random();
+                    int length;
+                    int width;
+                    length = measure.Next(1, 1000);
+                    width = measure.Next(1, 1000);
+                    Console.WriteLine($"your values are {length}and{width}.\n");
+                    Rectangle customrectangle = new Rectangle(length, width);
+                    r = customrectangle;
+                }
+                else if (int.Parse(rectangleselection) == 2)
+                {
